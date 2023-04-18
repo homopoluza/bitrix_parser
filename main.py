@@ -25,12 +25,10 @@ with open("urls.txt") as urls:
             page = requests.get("http://"+url.strip('\n'), verify=False)
             soup = BeautifulSoup(page.content, "html.parser")
             script_soup = soup.find_all("script")
-            script_soup = str(script_soup)
-
-            for i in url:    
-                if script_soup.find("bitrix") >= 0 or script_soup.find("b24") >= 0:
-                    bitrix.append(url)
-                    break
+            script_soup = str(script_soup)             
+            if script_soup.find("bitrix") >= 0 or script_soup.find("b24-form") >= 0:
+                bitrix.append(url)
+                break
         except requests.exceptions.RequestException:
             pass
 
