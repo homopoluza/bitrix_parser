@@ -27,8 +27,7 @@ with open("urls.txt") as urls:
             script_soup = soup.find_all("script")
             script_soup = str(script_soup)             
             if script_soup.find("bitrix") >= 0 or script_soup.find("b24-form") >= 0:
-                bitrix.append(url)
-                break
+                bitrix.append(url)                
         except requests.exceptions.RequestException:
             pass
 
